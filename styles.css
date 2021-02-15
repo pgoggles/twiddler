@@ -1,5 +1,13 @@
 /* These CSS rules apply to the <html>, <body>, and <div id="app"> HTML elements in index.html */
-html, body, #app {
+/* Define design colors to be used throughout style sheet */
+:root {
+  --primary: #F1F1F2;
+  --accent: #BCBABE;
+  --secondary: #2D4262;
+  --tertiary: #011A27;
+}
+
+tml, body, #app {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -7,8 +15,58 @@ html, body, #app {
 
 /* Continue building out the CSS styling for your Twiddler app below! We got you started by
 providing a space for you to apply styles to your app's outermost HTML element - the #app itself. */
-
 #app {
-  background-color: green;
-  color: yellow;
+  background: rgb(205,232,255);
+  background: linear-gradient(306deg, rgba(205,232,255,1) 0%, rgba(255,255,255,1) 100%);
+  height: 100%;
+
 }
+
+#app .header {
+  font-family: 'Lato', sans-serif;
+  font-size: 3rem;
+  color: var(----tertiary);
+  padding: 1% 1% 0% 1%;
+}
+
+#app .subheading {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  color: var(----tertiary);
+  padding: 0% 2% 2% 2%;
+}
+
+#app .tweet {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: var(--secondary);
+  padding: 0.2% 0.3% 0.2% 1.0%;
+  border-style: solid;
+  margin-bottom: 0.3%;
+  margin-left: 10%;
+  width: 30%;
+  border-radius: 3.2%;
+  border-color: rgba(0, 0, 0, 0.1)
+}
+
+#app .tweet .username {
+  position: relative;
+  top: 10px;
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  float: right;
+  padding-right: 2%;
+}
+
+#app .tweet .profilePicture{
+  display: inline-block;
+  margin-top: 2.5%;
+  }
+
+#app .tweet .profilePicture img{
+  width: 50%;
+  height: auto;
+  clip-path: circle(50%);
+  }
