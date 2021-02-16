@@ -36,6 +36,27 @@ providing a space for you to apply styles to your app's outermost HTML element -
   padding: 0% 2% 2% 2%;
 }
 
+#app .updateButton {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--primary);
+  background-color: var(--secondary);
+  width: 5%;
+  border-style: solid;
+  border-radius: 15%;
+}
+
+#app .updateButton:hover{
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+#app .allTweets {
+  display: inline-block;
+}
+
 #app .tweet {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
@@ -43,8 +64,7 @@ providing a space for you to apply styles to your app's outermost HTML element -
   padding: 0.2% 0.3% 0.2% 1.0%;
   border-style: solid;
   margin-bottom: 0.3%;
-  margin-left: 10%;
-  width: 30%;
+  width: 100%;
   border-radius: 3.2%;
   border-color: rgba(0, 0, 0, 0.1)
 }
@@ -58,6 +78,11 @@ providing a space for you to apply styles to your app's outermost HTML element -
   font-style: italic;
   float: right;
   padding-right: 2%;
+}
+
+#app .tweet .username:hover{
+  color: black;
+  cursor: pointer;
 }
 
 #app .tweet .profilePicture{
