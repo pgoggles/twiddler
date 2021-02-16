@@ -3,8 +3,11 @@
 :root {
   --primary: #F1F1F2;
   --accent: #BCBABE;
-  --secondary: #2D4262;
-  --tertiary: #011A27;
+  --secondary: #257CC3;
+  --tertiary: #102A68;
+  --hovercolor: #102A68;
+  --border: rgba(16, 42, 104, 0.4);
+  --lighten: rgba(256, 256, 256, 0.5);
 }
 
 tml, body, #app {
@@ -15,83 +18,227 @@ tml, body, #app {
 
 /* Continue building out the CSS styling for your Twiddler app below! We got you started by
 providing a space for you to apply styles to your app's outermost HTML element - the #app itself. */
+
+/* defining overall layout*/
 #app {
   background: rgb(205,232,255);
-  background: linear-gradient(306deg, rgba(205,232,255,1) 0%, rgba(255,255,255,1) 100%);
-  height: 100%;
-
+  background: linear-gradient(165deg, rgba(247,251,255,1) 0%, rgba(167,191,213,1) 100%);
+  font-family: 'Lato', sans-serif;
+  color: var(--secondary);
 }
 
+/* defining layout of top heading elements */
 #app .header {
-  font-family: 'Lato', sans-serif;
+  color: var(--tertiary);
+  align-self: center;
+}
+
+#app .title {
   font-size: 3rem;
-  color: var(----tertiary);
-  padding: 1% 1% 0% 1%;
+  text-align: center;
+}
+
+#app .title:hover {
+  color: var(--secondary);
+  cursor: pointer;
 }
 
 #app .subheading {
-  font-family: 'Lato', sans-serif;
   font-size: 0.8rem;
-  color: var(----tertiary);
-  padding: 0% 2% 2% 2%;
+  text-align: center;
 }
 
-#app .updateButton {
-  font-family: 'Lato', sans-serif;
+#app .buttonFlex {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#app .updateButton, #app .homeButton {
   font-size: 0.9rem;
   text-align: center;
   color: var(--primary);
   background-color: var(--secondary);
-  width: 5%;
-  border-style: solid;
-  border-radius: 15%;
+  border-radius: 8px;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px;
 }
 
-#app .updateButton:hover{
+#app .updateButton:hover, #app .homeButton:hover{
   color: white;
-  background-color: black;
+  background-color: var(--tertiary);
   cursor: pointer;
 }
 
+/* defining layout of flexbox including: friendsList, tweets, and submissionForm*/
+#app .flexbox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  gap: 2%;
+}
+
+/* defining panel containing friendsList and submissionForm */
+#app .firstPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+}
+
+/* defining friendsList */
+#app .friendsList {
+  font-weight: 300;
+  border-style: solid;
+  border-color: var(--border);
+  width: 200px;
+  height: 100px;
+  min-width:180px;
+  max-width: 220px;
+  margin-left: 15px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  list-style: square;
+  border-radius: 8px;
+  background-color: var(--lighten);
+}
+
+#app .friendsListTitle {
+  text-align: center;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
+
+#app .friendsList li {
+  padding-left: 35px;
+}
+
+#app .friendsList li:hover{
+  color: var(--hovercolor);
+  cursor: pointer;
+}
+
+/* defining submissionForm */
+#app .submissionForm {
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+  border-style: solid;
+  border-color: var(--border);
+  width: 200px;
+  height: 100px;
+  min-width:180px;
+  max-width: 220px;
+  margin-right: 30px;
+  padding: 5px 15px 20px 15px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: var(--lighten);
+}
+
+#app .submissionForm .submitButton {
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--primary);
+  background-color: var(--secondary);
+  border-radius: 8px;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px;
+}
+#app .submissionForm .submitButton:hover {
+  color: white;
+  background-color: var(--tertiary);
+  cursor: pointer;
+}
+
+/* defining tweet */
 #app .allTweets {
   display: inline-block;
+  width: 35%;
+  max-width: 400px;
+  min-width: 250px;
+  height: 90vh;
+  max-height: 90vh;
+  overflow: auto;
 }
 
 #app .tweet {
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  color: var(--secondary);
   padding: 0.2% 0.3% 0.2% 1.0%;
   border-style: solid;
-  margin-bottom: 0.3%;
-  width: 100%;
-  border-radius: 3.2%;
-  border-color: rgba(0, 0, 0, 0.1)
+  margin-bottom: 4px;
+  border-color: var(--border);
+  border-radius: 8px;
+  background-color: var(--lighten);
+}
+#app .upperTweet{
+  display: flex;
+  padding-left: 10px;
+}
+
+#app .tweet .profilePicture{
+  margin-top: 2.5%;
+}
+
+#app .tweet .profilePicture:hover{
+  cursor: pointer;
+}
+
+#app .tweet .profilePicture img{
+  width: 60%;
+  height: auto;
+  clip-path: circle(50%);
+}
+
+#app .tweet .userInfo {
+  display: flex;
+  flex-direction: column;
 }
 
 #app .tweet .username {
   position: relative;
-  top: 10px;
-  display: inline-block;
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
+  padding-top: 10px;
+  font-weight: 300;
+  font-size: 1.0em;
   font-style: italic;
   float: right;
-  padding-right: 2%;
 }
 
 #app .tweet .username:hover{
-  color: black;
+  color: var(--hovercolor);
   cursor: pointer;
 }
 
-#app .tweet .profilePicture{
-  display: inline-block;
-  margin-top: 2.5%;
-  }
+#app .tweet .timeago {
+  position: relative;
+  font-weight: 300;
+  font-size: 0.8em;
+  font-style: italic;
+  float: right;
+}
 
-#app .tweet .profilePicture img{
-  width: 50%;
-  height: auto;
-  clip-path: circle(50%);
-  }
+#app .tweet .message {
+  font-weight: 300;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+#app .icons {
+  display: flex;
+  gap: 25%;
+  justify-content: center;
+  padding: 15px 5px;
+}
+
+.like:hover, .retweet:hover, .share:hover, .comment:hover {
+  color: var(--hovercolor);
+  cursor: pointer;
+}
+
