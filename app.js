@@ -4,7 +4,7 @@ $(document).ready(function(){
   $app.html('')
   var $flexbox = $('<div class="flexbox"></div>');
   var $buttonFlex = $('<div class="buttonFlex"></div>');
-  var modifyUpdateButton;
+  $updateButton = $('<div class="updateButton"></div>');
 
   // defining functions to create page
   var createHeader = function() {
@@ -26,11 +26,7 @@ $(document).ready(function(){
   };
 
   var createUpdateButton = function() {
-    var $updateButton = $('<div class="updateButton"></div>');
-    modifyUpdateButton = function (buttonText) {
-      $updateButton.text(buttonText);
-    }
-    modifyUpdateButton('Update Feed');
+    $updateButton.text('Update Feed');
     $updateButton.appendTo($buttonFlex);
     $buttonFlex.appendTo($app);
   };
@@ -86,8 +82,8 @@ var renderFeed = function(user){
     var $upperTweet = $('<div class="upperTweet"></div>');
     var tweet = stream[index];
     var $tweet = $('<div class="tweet"></div>');
-    var $profilePicture = $('<div class="profilePicture"><img src ="' + tweet.profilePhotoURL + '"></div>');
-    $profilePicture.appendTo($upperTweet);
+    var $profilePhoto = $('<div class="profile-photo"><img src ="' + tweet.profilePhotoURL + '"></div>');
+    $profilePhoto.appendTo($upperTweet);
     var $userInfo =  $('<div class="userInfo"></div>');
     var $username = $('<div class="username"></div>');
     $username.text('@' + tweet.user).appendTo($userInfo);
@@ -97,10 +93,10 @@ var renderFeed = function(user){
     var $message = $('<div class="message"></div>');
     $message.text(tweet.message);
     var $icons = $('<div class="icons"></div>');
-    var $like = $('<div class="like"><i class="fas fa-heart"></i></div>');
-    var $retweet = $('<div class="retweet"><i class="fas fa-retweet"></i></div>');
-    var $share = $('<div class="share"><i class="fas fa-share"></i></div>');
-    var $comment = $('<div class="comment"><i class="fas fa-comments"></i></div>');
+    var $like = $('<div class="icon like"><i class="fas fa-heart"></i></div>');
+    var $retweet = $('<div class="icon retweet"><i class="fas fa-retweet"></i></div>');
+    var $share = $('<div class="icon share"><i class="fas fa-share"></i></div>');
+    var $comment = $('<div class="icon comment"><i class="fas fa-comments"></i></div>');
     $comment.appendTo($icons);
     $retweet.appendTo($icons);
     $like.appendTo($icons);
@@ -111,13 +107,24 @@ var renderFeed = function(user){
     $tweet.appendTo($allTweets);
     index -= 1;
   }
-  modifyUpdateButton(buttonText);
   $allTweets.appendTo($flexbox);
 };
 
 var appendFlexbox = function () {
   $flexbox.appendTo($app);
 }
+
+var handleUsernameClick = function () {
+  if ($updateButton[0].innerHTML === 'Update Feed') {
+    $updateButton.text('Back');
+  }
+};
+
+var handleButtonClick = function () {
+  if ($updateButton[0].innerHTML === 'Back') {
+    $updateButton.text('Update Feed');
+  }
+};
 
 // calling functions to draw initial page
   createHeader();
@@ -129,24 +136,27 @@ var appendFlexbox = function () {
 
 // defining clickable buttons
   $("#app").on('click', '.updateButton', function() {
-  renderFeed();
+    renderFeed();
+    handleButtonClick();
   });
 
   $("#app").on('click', '.homeButton', function() {
     renderFeed();
-    });
+    handleButtonClick();
+  });
 
   $("#app").on('click', '.username', function(element) {
     renderFeed(element.toElement.innerHTML.replace('@', ''));
+    handleUsernameClick();
   });
 
   $("#app").on('click', '.friendsList li', function(element) {
     renderFeed(element.toElement.innerHTML.replace('@', ''));
+    handleUsernameClick();
   });
 
-  $("#app").on('click', '.profilePicture', function(element) {
+  $("#app").on('click', '.profile-photo', function(element) {
     renderFeed(element.toElement.outerHTML.replace('<img src="./assets/img/', '').replace('.png">', ''));
+    handleUsernameClick();
   });
-
-
 });

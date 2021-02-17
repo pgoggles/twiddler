@@ -183,15 +183,15 @@ providing a space for you to apply styles to your app's outermost HTML element -
   padding-left: 10px;
 }
 
-#app .tweet .profilePicture{
+#app .tweet .profile-photo{
   margin-top: 2.5%;
 }
 
-#app .tweet .profilePicture:hover{
+#app .tweet .profile-photo:hover{
   cursor: pointer;
 }
 
-#app .tweet .profilePicture img{
+#app .tweet .profile-photo img{
   width: 60%;
   height: auto;
   clip-path: circle(50%);
@@ -237,7 +237,7 @@ providing a space for you to apply styles to your app's outermost HTML element -
   padding: 15px 5px;
 }
 
-.like:hover, .retweet:hover, .share:hover, .comment:hover {
+.icon:hover {
   color: var(--hovercolor);
   cursor: pointer;
 }
