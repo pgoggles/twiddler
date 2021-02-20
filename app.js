@@ -145,18 +145,23 @@ var handleButtonClick = function () {
     handleButtonClick();
   });
 
+  $("#app").on('click', '.title', function() {
+    renderFeed();
+    handleButtonClick();
+  });
+
   $("#app").on('click', '.username', function(element) {
-    renderFeed(element.toElement.innerHTML.replace('@', ''));
+    renderFeed(element.target.innerHTML.replace('@', ''));
     handleUsernameClick();
   });
 
   $("#app").on('click', '.friendsList li', function(element) {
-    renderFeed(element.toElement.innerHTML.replace('@', ''));
+    renderFeed(element.target.innerHTML.replace('@', ''));
     handleUsernameClick();
   });
 
   $("#app").on('click', '.profile-photo', function(element) {
-    renderFeed(element.toElement.outerHTML.replace('<img src="./assets/img/', '').replace('.png">', ''));
+    renderFeed(element.target.outerHTML.replace('<img src="./assets/img/', '').replace('.png">', ''));
     handleUsernameClick();
   });
 });
